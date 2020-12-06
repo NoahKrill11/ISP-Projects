@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="styles.css">
+	<title>Noah's Website</title>
+</head>
+<body>
+<p>Date: <span id="datetime"></span></p>
+<p>Time: <span id="time"></span></p>
+
+<h1><center>About my page</center></h1>
+<p><center>My name is Noah Krill and this website is the first project of my ISP class.</center></p>
+<p><center>This page was completed on 9/20/2020 at 8:05PM</center></p>
+
+<p>"Mozilla" is the application code name for Chrome, Firefox, IE, Safari, and Opera.</p>
+
+<p id= datetime>
+<script>
+	var dt = new Date();
+	document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
+</script>
+	
+<p id="browser"></p>
+<script>
+document.getElementById("browser").innerHTML = "App codename is " + navigator.appCodeName;
+</script>
+
+<p>The version of the browser is</p>
+<p id = "version">
+<script>
+document.getElementById("version").innerHTML = navigator.appVersion;
+</script>
+
+<p id="time"></p>
+<script>
+var time = new Date();
+document.getElementById("time").innerHTML = time.toLocaleTimeString();
+</script>
+
+
+<div id="contentContainer">
+<img id="thing" src="Noahkrill.png" width="150" height="250>
+<div id="contentContainer">
+<script>
+	
+	var theThing = document.querySelector("#thing");
+	var container = document.querySelector("#contentContainer");
+ 
+	container.addEventListener("click", getClickPosition, false);
+ 
+	function getClickPosition(e) {
+	    var parentPosition = getPosition(e.currentTarget);
+	    var xPosition = e.clientX - parentPosition.x - (theThing.clientWidth / 2);
+	    var yPosition = e.clientY - parentPosition.y - (theThing.clientHeight / 2);
+     
+	    theThing.style.left = xPosition + "px";
+	    theThing.style.top = yPosition + "px";
+	}
+ 
+	// Helper function to get an element's exact position
+	function getPosition(el) {
+	  var xPos = 0;
+	  var yPos = 0;
+ 
+	  while (el) {
+	    if (el.tagName == "BODY") {
+	      // deal with browser quirks with body/window/document and page scroll
+	      var xScroll = el.scrollLeft || document.documentElement.scrollLeft;
+	      var yScroll = el.scrollTop || document.documentElement.scrollTop;
+ 
+	      xPos += (el.offsetLeft - xScroll + el.clientLeft);
+	      yPos += (el.offsetTop - yScroll + el.clientTop);
+	    } else {
+	      // for all other non-BODY elements
+	      xPos += (el.offsetLeft - el.scrollLeft + el.clientLeft);
+	      yPos += (el.offsetTop - el.scrollTop + el.clientTop);
+	    }
+ 
+	    el = el.offsetParent;
+	  }
+	  return {
+	    x: xPos,
+	    y: yPos
+	  };
+	}
+
+	var num = window.prompt ("Enter the number you are trying to find the factorial for");
+	while (num < 0)
+	{
+		num = window.prompt ("Please enter a postive number");
+	}
+
+	function factorial (n)
+	{
+		if(n>0 && n <=1)
+		{
+			return 1;
+		}
+		else
+		{
+			return n * factorial(n-1);
+		}
+	}
+	var num2= factorial(num);
+	alert ("The factoral of the value " + num + " is " + num2)
+	
+</script>
+</body>
+</html>
